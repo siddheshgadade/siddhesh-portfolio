@@ -67,31 +67,31 @@ export default function Contact() {
       setIsSubmitting(true)
       
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
+        const response = await fetch("https://formsubmit.co/ajax/siddheshgadade3@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json"
           },
           body: JSON.stringify({
-            access_key: "70444a6b-3bee-4848-ae45-7503da7b05dc",
             name: form.name,
             email: form.email,
-            message: form.message
+            message: form.message,
+            _subject: `New Portfolio Contact from ${form.name}`
           })
         });
 
         const json = await response.json();
 
-        if (response.status === 200) {
+        if (response.status === 200 || json.success === "true") {
           setSubmitted(true)
           setForm({ name: '', email: '', message: '' })
           setTimeout(() => setSubmitted(false), 5000)
         } else {
-          setErrors({ form: json.message || "API Error. Message not sent." })
+          setErrors({ form: "API Error. Message not sent." })
         }
       } catch (error) {
-        setErrors({ form: "Network blocked the request. Try turning off your adblocker/VPN or changing Wi-Fi." })
+        setErrors({ form: "Your network is aggressively blocking Form APIs. Please try using mobile data!" })
       } finally {
         setIsSubmitting(false)
       }
