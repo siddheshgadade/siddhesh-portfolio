@@ -61,7 +61,7 @@ export default function Home() {
 
   return (
     <PageTransition>
-      <section className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6" id="hero-section">
+      <section className="min-h-screen flex items-center justify-center pt-24 pb-12 px-5 sm:px-6" id="hero-section">
         <motion.div
           variants={stagger}
           initial="initial"
@@ -79,7 +79,7 @@ export default function Home() {
           {/* Typed Heading */}
           <motion.h1
             variants={fadeUp}
-            className="text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-extrabold leading-tight tracking-tight mb-8"
+            className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-extrabold leading-tight tracking-tight mb-6 sm:mb-8"
           >
             <span className={!isDone ? 'typing-cursor' : ''}>
               {displayed.split('Siddhesh Gadade').map((part, i, arr) =>
@@ -98,19 +98,19 @@ export default function Home() {
           {/* Tagline */}
           <motion.p
             variants={fadeUp}
-            className="text-xl sm:text-2xl md:text-3xl text-tokyo-text-muted font-light max-w-3xl mx-auto mb-14 leading-relaxed"
+            className="text-lg sm:text-2xl md:text-3xl text-tokyo-text-muted font-light max-w-3xl mx-auto mb-10 sm:mb-14 leading-relaxed px-2"
           >
-            <span className="text-tokyo-blue font-bold tracking-wider">M.Sc. Computer Science</span>
-            {' | '}
-            <span className="text-tokyo-text font-medium">Full-Stack &amp; Data Engineer</span>
+            <span className="text-tokyo-blue font-bold tracking-wider block sm:inline mb-1 sm:mb-0">M.Sc. Computer Science</span>
+            <span className="hidden sm:inline">{' | '}</span>
+            <span className="text-tokyo-text font-medium block sm:inline">Full-Stack &amp; Data Engineer</span>
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full px-4 sm:px-0">
             <Link
               to="/projects"
               id="cta-explore"
-              className="btn-shine group inline-flex items-center gap-3 px-10 py-4 rounded-xl bg-tokyo-blue text-tokyo-bg font-bold text-base hover:shadow-lg hover:shadow-tokyo-blue/30 transition-all duration-300 hover:-translate-y-1"
+              className="btn-shine w-full sm:w-auto justify-center group inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl bg-tokyo-blue text-tokyo-bg font-bold text-sm sm:text-base hover:shadow-lg hover:shadow-tokyo-blue/30 transition-all duration-300 hover:-translate-y-1"
             >
               Explore My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -118,7 +118,7 @@ export default function Home() {
             <Link
               to="/contact"
               id="cta-hire"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-xl glass text-tokyo-text font-bold text-base hover:bg-tokyo-surface-light border border-tokyo-border hover:border-tokyo-green/40 hover:text-tokyo-green transition-all duration-300 hover:-translate-y-1"
+              className="w-full sm:w-auto justify-center inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl glass text-tokyo-text font-bold text-sm sm:text-base hover:bg-tokyo-surface-light border border-tokyo-border hover:border-tokyo-green/40 hover:text-tokyo-green transition-all duration-300 hover:-translate-y-1"
             >
               Hire Me
             </Link>
@@ -136,8 +136,8 @@ export default function Home() {
 
         {/* Gradient fades on edges */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-tokyo-bg to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-tokyo-bg to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-40 bg-gradient-to-r from-tokyo-bg to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-40 bg-gradient-to-l from-tokyo-bg to-transparent z-10" />
 
           <div className="flex marquee-track" style={{ width: 'max-content' }}>
             {[...techStack, ...techStack].map((tech, i) => (

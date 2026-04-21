@@ -62,7 +62,7 @@ const fadeScale = {
 export default function Projects() {
   return (
     <PageTransition>
-      <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+      <div className="min-h-screen pt-24 md:pt-32 pb-16 md:pb-24 px-4 md:px-12">
         <div className="max-w-7xl mx-auto">
 
           {/* ── Header ──────────────────────────────────────── */}
@@ -105,7 +105,7 @@ export default function Projects() {
                 className="group relative glass-strong rounded-[2rem] overflow-hidden flex flex-col border border-tokyo-border/50 hover:border-tokyo-border transition-colors duration-500"
               >
                 {/* ── Image Cover ─────────────────────────── */}
-                <div className="relative w-full aspect-video md:aspect-[16/10] overflow-hidden bg-tokyo-bg-dark">
+                <div className="relative w-full aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-tokyo-bg-dark">
                   <div className="absolute inset-0 bg-tokyo-bg/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   <img 
                     src={project.image} 
@@ -117,13 +117,13 @@ export default function Projects() {
                 </div>
 
                 {/* ── Content Area ────────────────────────── */}
-                <div className="relative p-8 md:p-10 flex flex-col flex-1 bg-tokyo-surface">
+                <div className="relative p-6 sm:p-8 md:p-10 flex flex-col flex-1 bg-tokyo-surface">
                   {/* Title */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-2.5 rounded-xl" style={{ backgroundColor: `${project.color}15` }}>
-                      <Layers size={24} style={{ color: project.color }} />
+                  <div className="flex items-center gap-3 md:gap-4 mb-4">
+                    <div className="p-2 md:p-2.5 rounded-xl" style={{ backgroundColor: `${project.color}15` }}>
+                      <Layers size={20} className="md:w-6 md:h-6" style={{ color: project.color }} />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-extrabold text-tokyo-text group-hover:text-white transition-colors duration-300">
+                    <h3 className="text-xl md:text-3xl font-extrabold text-tokyo-text group-hover:text-white transition-colors duration-300">
                       {project.title}
                     </h3>
                   </div>
@@ -146,12 +146,12 @@ export default function Projects() {
                   </div>
 
                   {/* Action links */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-tokyo-border/30">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-6 border-t border-tokyo-border/30 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-tokyo-text bg-tokyo-surface-light border border-tokyo-border hover:bg-tokyo-border/50 hover:text-white transition-all duration-300"
+                      className="inline-flex justify-center items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-tokyo-text bg-tokyo-surface-light border border-tokyo-border hover:bg-tokyo-border/50 hover:text-white transition-all duration-300 w-full sm:w-auto"
                     >
                       <FaGithub size={16} />
                       GitHub
@@ -160,7 +160,7 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-shine inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-tokyo-bg bg-tokyo-text hover:bg-white transition-all duration-300"
+                      className="btn-shine inline-flex justify-center items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-tokyo-bg bg-tokyo-text hover:bg-white transition-all duration-300 w-full sm:w-auto"
                     >
                       <ExternalLink size={16} />
                       Live Demo
