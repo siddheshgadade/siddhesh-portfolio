@@ -44,6 +44,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validate = () => {
     const errs = {}
@@ -57,14 +58,40 @@ export default function Contact() {
     return errs
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     setErrors(errs)
+    
     if (Object.keys(errs).length === 0) {
-      setSubmitted(true)
-      setForm({ name: '', email: '', message: '' })
-      setTimeout(() => setSubmitted(false), 5000)
+      setIsSubmitting(true)
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            // The platform requires an access key to route the email
+            access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_WEB3FORMS_KEY_HERE",
+            ...form,
+          }),
+        })
+        
+        const result = await response.json()
+        if (result.success) {
+          setSubmitted(true)
+          setForm({ name: '', email: '', message: '' })
+          setTimeout(() => setSubmitted(false), 5000)
+        } else {
+          setErrors({ form: result.message || "Something went wrong." })
+        }
+      } catch (error) {
+        setErrors({ form: "Network error. Please try again later." })
+      } finally {
+        setIsSubmitting(false)
+      }
     }
   }
 
@@ -211,12 +238,20 @@ export default function Contact() {
                 {/* Submit */}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   id="contact-submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-tokyo-blue text-tokyo-bg font-semibold text-sm hover:shadow-lg hover:shadow-tokyo-blue/25 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-tokyo-blue text-tokyo-bg font-semibold text-sm transition-all duration-300 ${
+                    isSubmitting 
+                      ? 'opacity-70 cursor-not-allowed' 
+                      : 'hover:shadow-lg hover:shadow-tokyo-blue/25 hover:-translate-y-0.5 active:translate-y-0'
+                  }`}
                 >
-                  <Send size={16} />
-                  Send Message
+                  <Send size={16} className={isSubmitting ? 'animate-pulse' : ''} />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+                {errors.form && (
+                  <p className="text-sm text-tokyo-red mt-2 text-center">{errors.form}</p>
+                )}
               </motion.form>
             </motion.div>
 
