@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ── Tokyo Night Design Tokens ─────────────────────────────────── */
+@theme {
+  --color-tokyo-bg: #1A1B26;
+  --color-tokyo-bg-dark: #13141C;
+  --color-tokyo-surface: #1E1F2B;
+  --color-tokyo-surface-light: #24253A;
+  --color-tokyo-border: #2F3049;
+  --color-tokyo-text: #C0CAF5;
+  --color-tokyo-text-muted: #565F89;
+  --color-tokyo-blue: #7AA2F7;
+  --color-tokyo-green: #9ECE6A;
+  --color-tokyo-purple: #BB9AF7;
+  --color-tokyo-orange: #FF9E64;
+  --color-tokyo-red: #F7768E;
+  --color-tokyo-cyan: #7DCFFF;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ── Base Styles ───────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-tokyo-bg);
+  color: var(--color-tokyo-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-tokyo-bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-tokyo-border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tokyo-blue);
+}
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background: rgba(122, 162, 247, 0.3);
+  color: #fff;
+}
+
+/* ── Glass Morphism Utility ─────────────────────────────────────── */
+.glass {
+  background: rgba(30, 31, 43, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(47, 48, 73, 0.5);
+}
+
+.glass-strong {
+  background: rgba(30, 31, 43, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(47, 48, 73, 0.6);
+}
+
+/* ── Gradient Utilities ─────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #7AA2F7 0%, #9ECE6A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #7AA2F7 0%, #7DCFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow Effects ───────────────────────────────────────────────── */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(122, 162, 247, 0.15),
+              0 0 60px rgba(122, 162, 247, 0.05);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(158, 206, 106, 0.15),
+              0 0 60px rgba(158, 206, 106, 0.05);
+}
+
+/* ── Tech Marquee ──────────────────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Typing Cursor ─────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  color: var(--color-tokyo-blue);
+  animation: blink 0.8s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
+}
+
+/* ── Floating Particles Background ──────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-30px) rotate(180deg); opacity: 0.6; }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float linear infinite;
+}
