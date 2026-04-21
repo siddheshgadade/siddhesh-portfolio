@@ -143,7 +143,7 @@ export default function Home() {
             {[...techStack, ...techStack].map((tech, i) => (
               <div
                 key={`${tech.name}-${i}`}
-                className="flex items-center gap-3 px-8 py-4 mx-4 rounded-xl glass hover:glow-blue transition-all duration-300 cursor-default group"
+                className="flex items-center gap-3 px-8 py-4 mx-4 rounded-xl bg-tokyo-surface border border-tokyo-border hover:border-tokyo-blue/50 hover:bg-tokyo-surface-light transition-colors duration-300 cursor-default group"
               >
                 <div
                   className="w-4 h-4 rounded-full shrink-0 group-hover:scale-125 transition-transform"

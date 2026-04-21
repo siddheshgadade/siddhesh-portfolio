@@ -80,7 +80,9 @@
   }
 
   .marquee-track {
-    animation: marquee 25s linear infinite;
+    animation: marquee 30s linear infinite;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   .marquee-track:hover {
@@ -112,29 +114,32 @@
     border-radius: 50%;
     pointer-events: none;
     animation: float linear infinite;
+    transform: translateZ(0);
+    will-change: transform, opacity;
   }
 
   /* ── Premium Button Shine ─────────────────────────────────────── */
   @keyframes shine {
-    0% { left: -100px; }
-    20% { left: 100%; opacity: 1; }
-    100% { left: 100%; opacity: 0; }
+    0% { transform: translateX(-150px) skewX(-30deg); opacity: 0; }
+    20% { opacity: 1; }
+    30% { transform: translateX(300px) skewX(-30deg); opacity: 0; }
+    100% { transform: translateX(300px) skewX(-30deg); opacity: 0; }
   }
 
   .btn-shine {
     position: relative;
     overflow: hidden;
+    transform: translateZ(0); /* Force hardware compositing */
   }
 
   .btn-shine::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100px;
-    width: 40px;
+    left: 0;
+    width: 60px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: skewX(-30deg);
-    animation: shine 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.2);
+    animation: shine 5s infinite ease-in-out;
   }
 }

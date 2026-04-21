@@ -12,20 +12,11 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      {/* Ambient background orbs */}
+      {/* Ambient background orbs - Static for performance */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <motion.div 
-          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-tokyo-blue/[0.04] blur-[120px]" />
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-tokyo-green/[0.04] blur-[120px]" />
-        <motion.div 
-          animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute top-[40%] right-[20%] w-[400px] h-[400px] rounded-full bg-tokyo-purple/[0.03] blur-[100px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-tokyo-blue/[0.04] blur-[120px]" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-tokyo-green/[0.04] blur-[120px]" style={{ transform: 'translateZ(0)' }} />
+        <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] rounded-full bg-tokyo-purple/[0.03] blur-[100px]" style={{ transform: 'translateZ(0)' }} />
       </div>
 
       <Navbar />
