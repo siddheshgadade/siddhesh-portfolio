@@ -58,45 +58,27 @@ export default function Contact() {
     return errs
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     const errs = validate()
     setErrors(errs)
     
     if (Object.keys(errs).length === 0) {
       setIsSubmitting(true)
+      
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: "70444a6b-3bee-4848-ae45-7503da7b05dc",
-            ...form,
-          }),
-        })
+        const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
+        const bodyText = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
+        const body = encodeURIComponent(bodyText);
         
-        // If it's not a successful status, it might be HTML (502 error, etc)
-        if (!response.ok) {
-           const text = await response.text();
-           console.error("Web3Forms Error:", text);
-           setErrors({ form: "Server rejected request. Please check console." })
-           return;
-        }
-
-        const result = await response.json()
-        if (result.success) {
-          setSubmitted(true)
-          setForm({ name: '', email: '', message: '' })
-          setTimeout(() => setSubmitted(false), 5000)
-        } else {
-          setErrors({ form: result.message || "Something went wrong." })
-        }
+        // Trigger native email client bypassing all APIs, Ad-Blockers, and Cloudflare firewalls.
+        window.location.href = `mailto:siddheshgadade3@gmail.com?subject=${subject}&body=${body}`;
+        
+        setSubmitted(true)
+        setForm({ name: '', email: '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
       } catch (error) {
-        console.error("Contact Form Catch Error:", error);
-        setErrors({ form: "Network error: " + error.message + ". (Do you have an ad-blocker enabled? Try disabling it!)" })
+        setErrors({ form: "Could not open your email client natively. Please email me directly!" })
       } finally {
         setIsSubmitting(false)
       }
