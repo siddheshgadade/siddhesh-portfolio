@@ -74,7 +74,7 @@ export default function Contact() {
           },
           body: JSON.stringify({
             // The platform requires an access key to route the email
-            access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_WEB3FORMS_KEY_HERE",
+            access_key: "70444a6b-3bee-4848-ae45-7503da7b05dc",
             ...form,
           }),
         })
