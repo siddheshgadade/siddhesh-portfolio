@@ -16,7 +16,7 @@ const projects = [
     tags: ['React', 'Flask', 'Scikit-Learn', 'Python'],
     color: '#7AA2F7',
     image: imgNeuroPlay,
-    github: 'https://github.com/siddheshgadade/neuroplay',
+    github: 'https://github.com/siddheshgadade/NeuroPlay-Mental-Health-App',
     live: '#',
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     tags: ['Python', 'LangChain', 'FastAPI'],
     color: '#9ECE6A',
     image: imgClarifAI,
-    github: 'https://github.com/siddheshgadade/clarifai',
+    github: 'https://github.com/siddheshgadade/ClarifAI---RAG-Based-Customer-Support-System',
     live: '#',
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     tags: ['WebXR', 'Three.js', 'JavaScript'],
     color: '#BB9AF7',
     image: imgAstroFix,
-    github: 'https://github.com/siddheshgadade/astrofix',
+    github: 'https://github.com/siddheshgadade/AstroFix-Zero-G-Protocol',
     live: '#',
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     tags: ['Python', 'Pandas', 'Matplotlib'],
     color: '#FF9E64',
     image: imgPsoClimate,
-    github: 'https://github.com/siddheshgadade/pso-climate',
+    github: 'https://github.com/siddheshgadade/PSO-Temperature-Optimization',
     live: '#',
   },
 ]
