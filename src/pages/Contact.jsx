@@ -73,12 +73,19 @@ export default function Contact() {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            // The platform requires an access key to route the email
             access_key: "70444a6b-3bee-4848-ae45-7503da7b05dc",
             ...form,
           }),
         })
         
+        // If it's not a successful status, it might be HTML (502 error, etc)
+        if (!response.ok) {
+           const text = await response.text();
+           console.error("Web3Forms Error:", text);
+           setErrors({ form: "Server rejected request. Please check console." })
+           return;
+        }
+
         const result = await response.json()
         if (result.success) {
           setSubmitted(true)
@@ -88,7 +95,8 @@ export default function Contact() {
           setErrors({ form: result.message || "Something went wrong." })
         }
       } catch (error) {
-        setErrors({ form: "Network error. Please try again later." })
+        console.error("Contact Form Catch Error:", error);
+        setErrors({ form: "Network error: " + error.message + ". (Do you have an ad-blocker enabled? Try disabling it!)" })
       } finally {
         setIsSubmitting(false)
       }
