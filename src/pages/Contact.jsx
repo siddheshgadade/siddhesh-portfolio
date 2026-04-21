@@ -58,7 +58,7 @@ export default function Contact() {
     return errs
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     setErrors(errs)
@@ -67,18 +67,31 @@ export default function Contact() {
       setIsSubmitting(true)
       
       try {
-        const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-        const bodyText = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
-        const body = encodeURIComponent(bodyText);
-        
-        // Trigger native email client bypassing all APIs, Ad-Blockers, and Cloudflare firewalls.
-        window.location.href = `mailto:siddheshgadade3@gmail.com?subject=${subject}&body=${body}`;
-        
-        setSubmitted(true)
-        setForm({ name: '', email: '', message: '' })
-        setTimeout(() => setSubmitted(false), 5000)
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({
+            access_key: "70444a6b-3bee-4848-ae45-7503da7b05dc",
+            name: form.name,
+            email: form.email,
+            message: form.message
+          })
+        });
+
+        const json = await response.json();
+
+        if (response.status === 200) {
+          setSubmitted(true)
+          setForm({ name: '', email: '', message: '' })
+          setTimeout(() => setSubmitted(false), 5000)
+        } else {
+          setErrors({ form: json.message || "API Error. Message not sent." })
+        }
       } catch (error) {
-        setErrors({ form: "Could not open your email client natively. Please email me directly!" })
+        setErrors({ form: "Network blocked the request. Try turning off your adblocker/VPN or changing Wi-Fi." })
       } finally {
         setIsSubmitting(false)
       }
