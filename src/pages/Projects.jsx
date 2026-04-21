@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Layers } from 'lucide-react'
+import { ExternalLink, Layers } from 'lucide-react'
+import { FaGithub } from 'react-icons/fa'
 import PageTransition from '../components/PageTransition'
 
 /* ── Projects Data ────────────────────────────────────────────── */
@@ -145,7 +146,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium text-tokyo-text-muted hover:text-tokyo-text hover:bg-tokyo-surface-light/50 border border-tokyo-border/30 hover:border-tokyo-blue/30 transition-all duration-200"
                     >
-                      <Github size={14} />
+                      <FaGithub size={14} />
                       GitHub
                     </a>
                     <a

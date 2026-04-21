@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Mail, Heart } from 'lucide-react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
@@ -9,8 +10,8 @@ const footerLinks = [
 ]
 
 const socials = [
-  { icon: Github, href: 'https://github.com/siddheshgadade', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/siddheshgadade', label: 'LinkedIn' },
+  { icon: FaGithub, href: 'https://github.com/siddheshgadade', label: 'GitHub' },
+  { icon: FaLinkedin, href: 'https://linkedin.com/in/siddheshgadade', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:siddhesh.gadade@email.com', label: 'Email' },
 ]
 

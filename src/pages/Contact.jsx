@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle } from 'lucide-react'
+import { Send, Mail, CheckCircle, AlertCircle } from 'lucide-react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import PageTransition from '../components/PageTransition'
 
 /* ── Socials ──────────────────────────────────────────────────── */
 const socials = [
   {
-    icon: Github,
+    icon: FaGithub,
     label: 'GitHub',
     handle: '@siddheshgadade',
     href: 'https://github.com/siddheshgadade',
     color: '#C0CAF5',
   },
   {
-    icon: Linkedin,
+    icon: FaLinkedin,
     label: 'LinkedIn',
     handle: 'Siddhesh Gadade',
     href: 'https://linkedin.com/in/siddheshgadade',
