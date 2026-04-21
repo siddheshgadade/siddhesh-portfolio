@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
@@ -61,17 +61,17 @@ export default function Home() {
 
   return (
     <PageTransition>
-      <section className="min-h-screen flex items-center justify-center pt-20 pb-12 px-6" id="hero-section">
+      <section className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6" id="hero-section">
         <motion.div
           variants={stagger}
           initial="initial"
           animate="animate"
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-5xl mx-auto text-center"
         >
           {/* Greeting chip */}
           <motion.div variants={fadeUp} className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium text-tokyo-blue">
-              <Sparkles size={14} />
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass glow-blue text-sm font-semibold text-tokyo-blue">
+              <Sparkles size={16} />
               <span>Available for opportunities</span>
             </div>
           </motion.div>
@@ -79,7 +79,7 @@ export default function Home() {
           {/* Typed Heading */}
           <motion.h1
             variants={fadeUp}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-6"
+            className="text-5xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-extrabold leading-tight tracking-tight mb-8"
           >
             <span className={!isDone ? 'typing-cursor' : ''}>
               {displayed.split('Siddhesh Gadade').map((part, i, arr) =>
@@ -98,27 +98,27 @@ export default function Home() {
           {/* Tagline */}
           <motion.p
             variants={fadeUp}
-            className="text-lg sm:text-xl md:text-2xl text-tokyo-text-muted font-light max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-xl sm:text-2xl md:text-3xl text-tokyo-text-muted font-light max-w-3xl mx-auto mb-14 leading-relaxed"
           >
-            <span className="text-tokyo-blue font-medium">M.Sc. Computer Science</span>
+            <span className="text-tokyo-blue font-bold tracking-wider">M.Sc. Computer Science</span>
             {' | '}
-            Full-Stack &amp; Data Engineer
+            <span className="text-tokyo-text font-medium">Full-Stack &amp; Data Engineer</span>
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               to="/projects"
               id="cta-explore"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-tokyo-blue text-tokyo-bg font-semibold text-sm hover:shadow-lg hover:shadow-tokyo-blue/25 transition-all duration-300 hover:-translate-y-0.5"
+              className="btn-shine group inline-flex items-center gap-3 px-10 py-4 rounded-xl bg-tokyo-blue text-tokyo-bg font-bold text-base hover:shadow-lg hover:shadow-tokyo-blue/30 transition-all duration-300 hover:-translate-y-1"
             >
               Explore My Work
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
               id="cta-hire"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl glass text-tokyo-text font-semibold text-sm hover:border-tokyo-green/40 hover:text-tokyo-green transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-xl glass text-tokyo-text font-bold text-base hover:bg-tokyo-surface-light border border-tokyo-border hover:border-tokyo-green/40 hover:text-tokyo-green transition-all duration-300 hover:-translate-y-1"
             >
               Hire Me
             </Link>
@@ -127,29 +127,29 @@ export default function Home() {
       </section>
 
       {/* ── Tech Snapshot Marquee ─────────────────────────────────── */}
-      <section className="py-16 overflow-hidden relative" id="tech-marquee-section">
-        <div className="max-w-7xl mx-auto px-6 mb-8">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-tokyo-text-muted">
+      <section className="py-20 overflow-hidden relative" id="tech-marquee-section">
+        <div className="max-w-7xl mx-auto px-6 mb-10">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.3em] text-tokyo-text-muted">
             Tech Snapshot
           </p>
         </div>
 
         {/* Gradient fades on edges */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-tokyo-bg to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-tokyo-bg to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-tokyo-bg to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-tokyo-bg to-transparent z-10" />
 
           <div className="flex marquee-track" style={{ width: 'max-content' }}>
             {[...techStack, ...techStack].map((tech, i) => (
               <div
                 key={`${tech.name}-${i}`}
-                className="flex items-center gap-3 px-6 py-3 mx-3 rounded-xl glass hover:glow-blue transition-all duration-300 cursor-default group"
+                className="flex items-center gap-3 px-8 py-4 mx-4 rounded-xl glass hover:glow-blue transition-all duration-300 cursor-default group"
               >
                 <div
-                  className="w-3 h-3 rounded-full shrink-0 group-hover:scale-125 transition-transform"
+                  className="w-4 h-4 rounded-full shrink-0 group-hover:scale-125 transition-transform"
                   style={{ backgroundColor: tech.color }}
                 />
-                <span className="text-sm font-medium text-tokyo-text-muted group-hover:text-tokyo-text whitespace-nowrap transition-colors">
+                <span className="text-base font-bold text-tokyo-text-muted group-hover:text-tokyo-text whitespace-nowrap transition-colors">
                   {tech.name}
                 </span>
               </div>
