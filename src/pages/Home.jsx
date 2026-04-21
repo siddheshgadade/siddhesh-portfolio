@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, Download } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 
 /* ── Typing Effect Hook ────────────────────────────────────────── */
@@ -115,6 +115,17 @@ export default function Home() {
               Explore My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto justify-center inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl glass text-tokyo-text font-bold text-sm sm:text-base hover:bg-tokyo-surface-light border border-tokyo-border hover:border-tokyo-blue/40 hover:text-tokyo-blue transition-all duration-300 hover:-translate-y-1"
+            >
+              <Download size={18} />
+              Resume
+            </a>
+
             <Link
               to="/contact"
               id="cta-hire"

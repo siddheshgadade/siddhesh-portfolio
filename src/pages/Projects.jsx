@@ -162,8 +162,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="btn-shine inline-flex justify-center items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-tokyo-bg bg-tokyo-text hover:bg-white transition-all duration-300 w-full sm:w-auto"
                     >
-                      <ExternalLink size={16} />
-                      Live Demo
+                      📺 Watch Demo
                     </a>
                   </div>
                 </div>
