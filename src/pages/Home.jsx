@@ -117,7 +117,8 @@ export default function Home() {
             </Link>
             
             <a
-              href="#"
+              href="/Siddhesh_Gadade_Resume_2026.pdf"
+              download="Siddhesh_Gadade_Resume_2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto justify-center inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl glass text-tokyo-text font-bold text-sm sm:text-base hover:bg-tokyo-surface-light border border-tokyo-border hover:border-tokyo-blue/40 hover:text-tokyo-blue transition-all duration-300 hover:-translate-y-1"
