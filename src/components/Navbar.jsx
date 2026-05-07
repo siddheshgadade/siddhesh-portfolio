@@ -122,6 +122,7 @@ export default function Navbar() {
                 >
                   <NavLink
                     to={to}
+                    onClick={() => setMobileOpen(false)}
                     id={`nav-mobile-link-${label.toLowerCase()}`}
                     className={({ isActive }) =>
                       `block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
@@ -135,6 +136,24 @@ export default function Navbar() {
                   </NavLink>
                 </motion.li>
               ))}
+              
+              {/* Mobile CLI Button */}
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: links.length * 0.05 }}
+              >
+                <button
+                  onClick={() => {
+                    setMobileOpen(false)
+                    setTerminalOpen(true)
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-tokyo-text-muted hover:text-tokyo-green hover:bg-tokyo-surface-light/30 transition-all text-left"
+                >
+                  <TerminalIcon size={18} />
+                  <span>Open Terminal</span>
+                </button>
+              </motion.li>
             </ul>
           </motion.div>
         )}
