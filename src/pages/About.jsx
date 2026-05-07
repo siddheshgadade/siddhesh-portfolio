@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, Calendar, MapPin } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
+import GitHubCalendar from 'react-github-calendar'
 
 /* ── Bio Data ─────────────────────────────────────────────────── */
 const bio = `I am an M.Sc. Computer Science candidate based in Navi Mumbai, bridging the gap between advanced research and industrial application. I specialize in highly normalized relational databases, decoupled API backends, and Machine Learning optimizations.`
@@ -203,6 +204,43 @@ export default function About() {
                 </motion.div>
               ))}
             </div>
+          </motion.section>
+
+          {/* ── Section: GitHub Contributions ──────────────────────── */}
+          <motion.section
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: '-50px' }}
+            className="mt-20"
+            id="github-contributions"
+          >
+            <motion.div variants={fadeUp} className="mb-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-tokyo-orange">
+                Open Source
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl font-bold mb-10">
+              Days I Code
+            </motion.h2>
+
+            <motion.div 
+              variants={scaleIn}
+              className="glass rounded-2xl p-6 md:p-8 hover:glow-blue transition-all duration-300 overflow-x-auto"
+            >
+              <div className="min-w-[700px]">
+                <GitHubCalendar 
+                  username="siddheshgadade" 
+                  colorScheme="dark"
+                  theme={{
+                    dark: ['#1A1B26', '#1e3a29', '#306844', '#55a630', '#9ECE6A']
+                  }}
+                  fontSize={14}
+                  blockSize={12}
+                  blockMargin={4}
+                />
+              </div>
+            </motion.div>
           </motion.section>
         </div>
       </div>

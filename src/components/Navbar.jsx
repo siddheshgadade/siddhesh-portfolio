@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Terminal as TerminalIcon } from 'lucide-react'
+import Terminal from './Terminal'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -13,6 +14,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [terminalOpen, setTerminalOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -76,6 +78,17 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* CLI Button (Desktop) */}
+          <div className="hidden md:flex items-center ml-4">
+            <button
+              onClick={() => setTerminalOpen(true)}
+              className="p-2 rounded-lg text-tokyo-text-muted hover:text-tokyo-green hover:bg-tokyo-surface-light/50 transition-colors group"
+              title="Open Terminal"
+            >
+              <TerminalIcon size={18} className="group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -125,6 +138,11 @@ export default function Navbar() {
             </ul>
           </motion.div>
         )}
+      </AnimatePresence>
+
+      {/* Terminal Overlay */}
+      <AnimatePresence>
+        {terminalOpen && <Terminal onClose={() => setTerminalOpen(false)} />}
       </AnimatePresence>
     </motion.nav>
   )

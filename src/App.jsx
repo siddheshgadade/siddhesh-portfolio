@@ -6,12 +6,14 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
+import Scene from './components/Scene'
 
 function App() {
   const location = useLocation()
 
   return (
     <div className="min-h-screen flex flex-col relative">
+      <Scene />
       {/* Ambient background orbs - Static for performance */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-tokyo-blue/[0.04] blur-[120px]" style={{ transform: 'translateZ(0)' }} />
