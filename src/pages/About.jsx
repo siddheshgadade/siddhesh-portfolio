@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, Calendar, MapPin } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
-import GitHubCalendar from 'react-github-calendar'
+import { GitHubCalendar } from 'react-github-calendar'
 
 /* ── Bio Data ─────────────────────────────────────────────────── */
 const bio = `I am an M.Sc. Computer Science candidate based in Navi Mumbai, bridging the gap between advanced research and industrial application. I specialize in highly normalized relational databases, decoupled API backends, and Machine Learning optimizations.`
